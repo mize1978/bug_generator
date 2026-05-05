@@ -1,24 +1,50 @@
-# README
+# 🐞 Bug Generator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+人生、バグってない？🐞  
+今日のあなたの“エラー”をランダムで表示するシンプルなアプリです。
 
-Things you may want to cover:
+---
 
-* Ruby version
+## 🌐 URL
+https://（ここに本番URL）
 
-* System dependencies
+---
 
-* Configuration
+## 💻 GitHub
+https://github.com/mize1978/bug_generator
 
-* Database creation
+---
 
-* Database initialization
+## ✨ 機能
+- バグ（エラー）をランダム表示
+- 「もう一回バグる」で再生成
+- X（Twitter）シェア機能
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## 🎯 こだわり
+- 「エンジニアあるある」をネタにした設計
+- シンプルで直感的に楽しめるUI
+- OGP対応でシェアしたくなるデザイン
 
-* Deployment instructions
+---
 
-* ...
+## 🖼️ スクリーンショット
+![OGP](app/assets/images/ogp.png)
+
+---
+
+## 🛠 技術スタック
+- Ruby on Rails
+- Docker
+- MySQL（またはSQLite）
+- HTML / CSS / SCSS
+
+---
+
+## 🚀 セットアップ
+
+```bash
+git clone https://github.com/（URL）
+cd bug_generator
+docker compose up
