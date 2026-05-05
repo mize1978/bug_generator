@@ -6,7 +6,7 @@
 ---
 
 ## 🌐 URL
-https://（ここに本番URL）
+https://bug-generator.onrender.com
 
 ---
 
