@@ -1,0 +1,98 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: monospace;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container {
+  text-align: center;
+  background: rgba(30, 41, 59, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  width: 420px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.error-box {
+  background: #020617;
+  border: 2px solid #ef4444;
+  color: #f87171;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin: 24px 0;
+  word-break: break-word;
+  font-family: "Courier New", monospace;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.6);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.button_to {
+  margin: 0;
+}
+
+/* ボタン共通 */
+.bug-btn,
+.share-btn,
+.button_to button {
+  height: 44px;
+  min-width: 140px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.bug-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.share-btn {
+  background: #000;
+  color: white;
+  border: 1px solid #333;
+}
+
+.bug-btn:hover,
+.share-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.error-box.rare {
+  border-color: #facc15;
+  color: #facc15;
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
+}
