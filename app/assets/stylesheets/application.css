@@ -29,6 +29,34 @@ h1 {
   letter-spacing: 1px;
 }
 
+/* Loading overlay */
+turbo-frame#bug {
+  display: block;
+  position: relative;
+}
+
+.bug-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 20;
+  font-family: "Courier New", monospace;
+  color: #f87171;
+  font-size: 13px;
+  letter-spacing: 3px;
+  cursor: wait;
+  animation: loading-fade-in 0.12s ease;
+}
+
+@keyframes loading-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .bug-category {
   display: inline-block;
   background: rgba(239, 68, 68, 0.12);
