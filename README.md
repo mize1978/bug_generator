@@ -14,7 +14,11 @@ https://bug-generator.onrender.com
 ## 🖼️ スクリーンショット
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mize1978/bug_generator/main/app/assets/images/ogp.png" width="480" alt="Bug Generator スクリーンショット">
+  <img src="https://raw.githubusercontent.com/mize1978/bug_generator/main/app/assets/images/screenshot_normal.jpg" width="48%" alt="通常バグ">
+  <img src="https://raw.githubusercontent.com/mize1978/bug_generator/main/app/assets/images/screenshot_rare.jpg" width="48%" alt="レアバグ（20%）">
+</p>
+<p align="center">
+  <sub>通常バグ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; レアバグ（20%）</sub>
 </p>
 
 ---
