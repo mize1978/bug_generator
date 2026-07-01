@@ -2,6 +2,13 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+document.addEventListener("keydown", (e) => {
+  if (e.code !== "Space" && e.code !== "Enter") return
+  if (["BUTTON", "A", "INPUT", "TEXTAREA"].includes(e.target.tagName)) return
+  e.preventDefault()
+  document.querySelector(".bug-btn")?.click()
+})
+
 document.addEventListener("turbo:load", () => {
   console.log(
     "%c 🐞 Bug Generator %c built by mize ",

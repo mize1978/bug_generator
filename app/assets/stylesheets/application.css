@@ -103,6 +103,18 @@ h1 {
   border: 1px solid #333;
 }
 
+.bug-counter {
+  font-size: 12px;
+  color: #475569;
+  margin: -8px 0 16px;
+  letter-spacing: 0.4px;
+}
+
+.bug-counter strong {
+  color: #f87171;
+  font-size: 14px;
+}
+
 .bug-btn:hover,
 .share-btn:hover,
 .copy-btn:hover {

@@ -9,6 +9,10 @@
       <%= @bug %>
     </div>
 
+    <% if @bug_count > 1 %>
+      <p class="bug-counter">今日 <strong><%= @bug_count %></strong> 回バグった 🐞</p>
+    <% end %>
+
     <div class="buttons"
          data-controller="copy"
          data-copy-text-value="<%= @bug %>">

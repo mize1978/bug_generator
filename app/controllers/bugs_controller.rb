@@ -62,8 +62,14 @@ class BugsController < ApplicationController
   }.freeze
 
   def index
-    @category, bugs_in_category = BUGS.flat_map { |cat, bs| bs.map { |b| [cat, b] } }.sample
-    @bug  = bugs_in_category
+    if session[:bug_date] != Date.today.to_s
+      session[:bug_date]  = Date.today.to_s
+      session[:bug_count] = 0
+    end
+    session[:bug_count] = (session[:bug_count] || 0) + 1
+    @bug_count = session[:bug_count]
+
+    @category, @bug = BUGS.flat_map { |cat, bs| bs.map { |b| [cat, b] } }.sample
     @rare = rand < 0.2
     @bug  = "💥 #{@bug}" if @rare
 
