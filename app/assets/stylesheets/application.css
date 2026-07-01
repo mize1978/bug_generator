@@ -95,4 +95,55 @@ h1 {
   border-color: #facc15;
   color: #facc15;
   box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
+  animation: rare-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes rare-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.5), 0 0 0px rgba(250, 204, 21, 0);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 36px rgba(250, 204, 21, 0.9), 0 0 60px rgba(250, 204, 21, 0.3);
+    transform: scale(1.015);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    padding: 24px 16px;
+    height: auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 420px;
+    padding: 28px 20px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .error-box {
+    font-size: 14px;
+    padding: 16px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bug-btn,
+  .share-btn,
+  .button_to,
+  .button_to button {
+    width: 100%;
+    min-width: unset;
+  }
 }

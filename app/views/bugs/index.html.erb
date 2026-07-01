@@ -7,24 +7,11 @@
     <%= @bug %>
   </div>
 
-  <%
-    templates = [
-      "🐞 今日のバグ：#{@bug} #BugGenerator",
-      "🐞 今日のバグ：#{@bug}\nあるあるすぎて泣いた😂 #BugGenerator",
-      "🐞 今日のバグ：#{@bug}\n再現できませんでした（完） #BugGenerator",
-      "🐞 今日のバグ：#{@bug}\n仕様です（圧） #BugGenerator",
-      "🔮 今日のバグ運：#{@bug}\nあなたも引いてみる？ #BugGenerator"
-    ]
-
-    share_text = templates.sample
-    share_url = request.original_url
-  %>
-
   <div class="buttons">
     <%= button_to "もう一回バグる", root_path, method: :get, class: "bug-btn" %>
 
     <a
-      href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(share_text) %>&url=<%= ERB::Util.url_encode(share_url) %>"
+      href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(@share_text) %>&url=<%= ERB::Util.url_encode(@share_url) %>"
       target="_blank"
       rel="noopener"
       class="share-btn"
