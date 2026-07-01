@@ -31,7 +31,11 @@ https://bug-generator.onrender.com
 - クリップボードにコピー
 - X（Twitter）シェア機能（テンプレートランダム）
 - レアバグ（20%の確率）：💥 付きで金色にきらめく演出
-- Web Audio API による操作音（外部ライブラリ不使用）
+- Web Audio API による操作音（外部ライブラリ・音声ファイル不使用）
+  - ボタン押下：ピッ（矩形波）
+  - 通常バグ表示：ポン（サイン波）
+  - レアバグ出現：キラーン（C→E→G→C アルペジオ）
+  - シェアボタン：カシャ（ホワイトノイズ）
 
 ---
 
@@ -53,9 +57,11 @@ https://bug-generator.onrender.com
 ---
 
 ## 🛠 技術スタック
-- Ruby on Rails 7.2
-- Hotwire（Turbo Frame / Stimulus）
-- Web Audio API
+- Ruby 3.2 / Rails 7.2
+- Turbo Frame（部分更新）
+- Stimulus（クリップボードコピー）
+- Importmap（JSバンドラー不使用）
+- Web Audio API（サウンドエフェクト）
 - Docker / Docker Compose
 - SQLite
 - HTML / CSS
