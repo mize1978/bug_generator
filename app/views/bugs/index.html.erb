@@ -1,22 +1,28 @@
 <div class="container">
   <h1>🐞 Bug Generator</h1>
-
   <p>今日のあなたのバグ</p>
 
-  <div class="error-box <%= 'rare' if @rare %>">
-    <%= @bug %>
-  </div>
+  <turbo-frame id="bug">
+    <span class="bug-category"><%= @category %></span>
 
-  <div class="buttons">
-    <%= button_to "もう一回バグる", root_path, method: :get, class: "bug-btn" %>
+    <div class="error-box <%= 'rare' if @rare %>">
+      <%= @bug %>
+    </div>
 
-    <a
-      href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(@share_text) %>&url=<%= ERB::Util.url_encode(@share_url) %>"
-      target="_blank"
-      rel="noopener"
-      class="share-btn"
-    >
-      ✕ バグを投稿
-    </a>
-  </div>
+    <div class="buttons"
+         data-controller="copy"
+         data-copy-text-value="<%= @bug %>">
+      <%= button_to "もう一回バグる", root_path, method: :get, class: "bug-btn",
+            data: { turbo_frame: "bug" } %>
+
+      <button class="copy-btn" data-copy-target="btn" data-action="copy#copy">
+        コピー
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(@share_text) %>&url=<%= ERB::Util.url_encode(@share_url) %>"
+         target="_blank" rel="noopener" class="share-btn">
+        ✕ 投稿
+      </a>
+    </div>
+  </turbo-frame>
 </div>

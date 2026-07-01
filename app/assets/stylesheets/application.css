@@ -29,6 +29,18 @@ h1 {
   letter-spacing: 1px;
 }
 
+.bug-category {
+  display: inline-block;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+  font-size: 11px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: 0.8px;
+}
+
 .error-box {
   background: #020617;
   border: 2px solid #ef4444;
@@ -36,10 +48,16 @@ h1 {
   padding: 20px;
   border-radius: 12px;
   font-size: 16px;
-  margin: 24px 0;
+  margin: 16px 0 24px;
   word-break: break-word;
   font-family: "Courier New", monospace;
   text-shadow: 0 0 8px rgba(248, 113, 113, 0.6);
+  animation: bug-appear 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes bug-appear {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 
 .buttons {
@@ -86,16 +104,31 @@ h1 {
 }
 
 .bug-btn:hover,
-.share-btn:hover {
+.share-btn:hover,
+.copy-btn:hover {
   opacity: 0.85;
   transform: translateY(-2px) scale(1.03);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.07);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: monospace;
+}
+
+.copy-btn--done {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.35);
 }
 
 .error-box.rare {
   border-color: #facc15;
   color: #facc15;
   box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
-  animation: rare-pulse 1.8s ease-in-out infinite;
+  animation: bug-appear 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+             rare-pulse 1.8s 0.5s ease-in-out infinite;
 }
 
 @keyframes rare-pulse {
@@ -141,6 +174,7 @@ h1 {
 
   .bug-btn,
   .share-btn,
+  .copy-btn,
   .button_to,
   .button_to button {
     width: 100%;

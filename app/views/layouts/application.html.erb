@@ -7,13 +7,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-  <!-- 👇ここに書く -->
   <meta property="og:title" content="Bug Generator">
   <meta property="og:description" content="今日のあなたのバグを診断🐞">
   <meta property="og:image" content="<%= image_url('ogp.png') %>">
   <meta property="og:url" content="<%= request.original_url %>">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bug Generator">
+  <meta name="twitter:description" content="今日のあなたのバグを診断🐞 エンジニアあるある">
+  <meta name="twitter:image" content="<%= image_url('ogp.png') %>">
 
     <%= yield :head %>
 
