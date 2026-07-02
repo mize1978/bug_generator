@@ -7,7 +7,7 @@
 ---
 
 ## 🌐 デモ
-https://bug-generator.onrender.com
+https://bug-generator-zt5t.onrender.com
 
 ---
 
