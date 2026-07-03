@@ -25,11 +25,11 @@
 
 ## スクリーンショット
 
-**通常バグ**
+### 通常バグ
 
 <img src="https://raw.githubusercontent.com/mize1978/bug_generator/main/app/assets/images/screenshot_normal.jpg" width="100%" alt="通常バグ">
 
-**レアバグ（20%）**
+### レアバグ（20%）
 
 <img src="https://raw.githubusercontent.com/mize1978/bug_generator/main/app/assets/images/screenshot_rare.jpg" width="100%" alt="レアバグ（20%）">
 
