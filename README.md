@@ -1,13 +1,16 @@
+<div align="center">
+
 # 🐞 Bug Generator
 
-人生、バグってない？🐞  
-今日のあなたのエラーを診断するアプリです。  
-「エンジニアあるある」をネタに、ランダムなバグメッセージを生成してXでシェアできます。
+<p>人生、バグってない？ — エンジニアあるあるバグを生成してXでシェアするアプリ</p>
 
----
+<img src="app/assets/images/ogp.png" alt="Bug Generator" width="100%">
 
-## 🌐 デモ
-https://bug-generator-zt5t.onrender.com
+<br>
+
+🔗 **[デモを見る](https://bug-generator-zt5t.onrender.com)**　|　📖 **[GitHubリポジトリ](https://github.com/mize1978/bug_generator)**
+
+</div>
 
 ---
 
