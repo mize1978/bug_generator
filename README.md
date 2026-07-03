@@ -16,6 +16,8 @@
 
 ## 🖼️ スクリーンショット
 
+<img src="app/assets/images/app_preview.png" alt="Bug Generator アプリ画面" width="100%">
+
 **通常バグ**
 
 <img src="https://raw.githubusercontent.com/mize1978/bug_generator/main/app/assets/images/screenshot_normal.jpg" width="100%" alt="通常バグ">
