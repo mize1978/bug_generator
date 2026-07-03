@@ -8,6 +8,15 @@
 
 <br>
 
+![Ruby](https://img.shields.io/badge/Ruby-3.x-CC342D?style=flat-square&logo=ruby)
+![Rails](https://img.shields.io/badge/Rails-7.2-CC0000?style=flat-square&logo=rubyonrails)
+![Hotwire](https://img.shields.io/badge/Turbo-Hotwire-5A0FC8?style=flat-square)
+![Stimulus](https://img.shields.io/badge/Stimulus-JS-333?style=flat-square&logo=javascript&logoColor=F7DF1E)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=flat-square&logo=render)
+
+<br>
+
 🔗 **[デモを見る](https://bug-generator-zt5t.onrender.com)**　|　📖 **[GitHubリポジトリ](https://github.com/mize1978/bug_generator)**
 
 </div>
