@@ -17,7 +17,7 @@
 
 <br>
 
-🔗 **[デモを見る](https://bug-generator-zt5t.onrender.com)**　|　📖 **[GitHubリポジトリ](https://github.com/mize1978/bug_generator)**
+🔗 **[デモを見る](https://bug-generator.onrender.com)**　|　📖 **[GitHubリポジトリ](https://github.com/mize1978/bug_generator)**
 
 </div>
 
