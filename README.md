@@ -4,7 +4,7 @@
 
 <p>人生、バグってない？ — エンジニアあるあるバグを生成してXでシェアするアプリ</p>
 
-<img src="app/assets/images/ogp.png" alt="Bug Generator" width="100%">
+<img src="app/assets/images/hero.png" alt="Bug Generator" width="100%">
 
 <br>
 
