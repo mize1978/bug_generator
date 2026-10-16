@@ -1,7 +1,7 @@
 <div class="container">
   <header class="generator-header"><span class="eyebrow">A LITTLE ERROR, A LITTLE LAUGH.</span><div class="title-row"><h1>Bug Generator</h1><div class="ladybug-stage" data-controller="ladybug">
       <svg class="ladybug-thread" aria-hidden="true"><path data-ladybug-target="thread" d="M28 0 L28 45" /></svg>
-      <button type="button" class="ladybug-handle" aria-label="MizeLyのてんとう虫を揺らす" data-ladybug-target="bug" data-action="pointerdown->ladybug#grab pointermove->ladybug#move pointerup->ladybug#release pointercancel->ladybug#release lostpointercapture->ladybug#release click->ladybug#nudge"><%= render "shared/ladybug" %></button>
+      <button type="button" class="ladybug-handle" aria-label="MizeLyのてんとう虫を揺らす" data-ladybug-target="bug"><%= render "shared/ladybug" %></button>
     </div></div><p>今日のあなた、どこでバグる？</p></header>
   <turbo-frame id="bug">
     <section data-controller="collection" data-collection-result-value="<%= @result.to_json %>" data-collection-url-value="<%= @share_url %>" data-collection-day-value="<%= @today.iso8601 %>" data-collection-track-value="<%= @track %>">

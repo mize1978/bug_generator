@@ -303,3 +303,5 @@ button:focus-visible,a:focus-visible,summary:focus-visible { outline:2px solid #
 @media(max-width:480px) { .title-row { gap:0; }.title-row h1 { font-size:24px; }.ladybug-stage { width:48px; }.ladybug-handle,.ladybug-art { width:48px;height:48px; } }
 @media(prefers-reduced-motion:reduce) { .ladybug-handle { cursor:default; } }
 .generator-header>.eyebrow { display:block; }
+
+.ladybug-handle[data-held] { cursor:grabbing; }
