@@ -30,19 +30,19 @@
         <p class="generator-footnote">テーマを選んで、今日のバグをひとつ。</p>
       </section>
 
-      <section class="result-panel <%= 'is-rare' if @generated && @result[:rare] %>" aria-label="生成結果" aria-live="polite">
+      <section class="result-panel <%= 'is-rare' if @generated && @result[:rare] %>" style="<%= "--name-len:#{@result[:type].length}" if @generated %>" aria-label="生成結果" aria-live="polite">
         <div class="ladybug-stage" data-controller="ladybug">
           <svg class="ladybug-thread" aria-hidden="true"><path data-ladybug-target="thread" d="M28 0 L28 45" /></svg>
           <button type="button" class="ladybug-handle" aria-label="MizeLyのてんとう虫を揺らす" data-ladybug-target="bug"><%= render "shared/ladybug" %></button>
         </div>
         <div class="panel-heading"><h2>BUG REPORT</h2><span class="report-state"><span class="state-dot"></span><%= @generated ? (@result[:rare] ? "✦ RARE BUG" : "GENERATED") : "STANDBY" %></span></div>
         <% if @generated %>
-          <article class="report-card error-box <%= 'rare' if @result[:rare] %>">
+          <article class="report-card error-box <%= 'rare' if @result[:rare] %>" data-controller="severity-count">
             <div class="report-context"><span class="bug-category"><%= @result[:category] %></span><span>HUMAN / EXCEPTION</span></div>
-            <div class="severity-heading"><span>SEVERITY</span><span><strong><%= @result[:severity] %></strong>%</span></div>
+            <div class="severity-heading"><span>SEVERITY</span><span><strong data-severity-count-target="value" data-to="<%= @result[:severity] %>"><%= @result[:severity] %></strong>%</span></div>
             <div class="severity-track"><span style="width:<%= @result[:severity] %>%"></span></div>
-            <div class="error-detail"><p class="field-label">ERROR NAME</p><h3><%= @result[:type] %></h3><p class="bug-message"><%= @result[:message] %></p></div>
-            <div class="trace-block"><p class="field-label">STACK TRACE</p><pre class="stack-trace"><%= @result[:trace].join("\n") %></pre></div>
+            <div class="error-detail"><p class="field-label">ERROR NAME</p><h3 class="error-name" aria-label="<%= @result[:type] %>"><%= typed_error_name(@result[:type]) %></h3><p class="bug-message"><%= @result[:message] %></p></div>
+            <div class="trace-block"><p class="field-label">STACK TRACE</p><pre class="stack-trace"><% @result[:trace].each_with_index do |line, i| %><span class="trace-line" style="--i:<%= i %>"><%= line %></span><% end %></pre></div>
           </article>
           <aside class="hint-panel"><h3><span aria-hidden="true">✧</span> WORKAROUND</h3><p><%= @result[:hint] %></p></aside>
           <div class="report-actions" data-controller="copy" data-copy-text-value="<%= @result[:text] %>">
