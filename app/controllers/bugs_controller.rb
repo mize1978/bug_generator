@@ -14,6 +14,9 @@ class BugsController < ApplicationController
     else
       supplied_seed || SecureRandom.random_number(2**32)
     end
+    @generated = supplied_seed.present? || params[:roll] == "1" || @daily
+    return unless @generated
+
     @result = BugRoll.build(seed: seed, category: @selected_category, daily: @daily)
     @track = supplied_seed.nil?
     @share_url = root_url(category: @selected_category, seed: seed, mode: (@daily ? "daily" : nil), day: (@daily ? @day.iso8601 : nil))

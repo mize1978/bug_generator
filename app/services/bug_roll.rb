@@ -47,7 +47,7 @@ class BugRoll
   }.freeze
   TYPES = ["NotFoundError", "TimeoutException", "BufferOverflow", "InfiniteLoopError", "ConnectionRefused", "UnexpectedNull"].freeze
   LEVELS = [["INFO", "ひと休みで再起動できそう", 12..29], ["WARNING", "今日は省エネ運転で", 30..54], ["ERROR", "ひとつずつ切り分けよう", 55..79], ["CRITICAL", "まず休憩を優先しよう", 80..99]].freeze
-  HINTS = ["再試行の前に、水をひと口。", "タスクをひとつだけ小さくしてみよう。", "今日はセーブして終了してもOK。", "誰かに話すとログが整理されるかも。", "完璧より、ひとつ進めば成功。", "深呼吸して、別のルートから試そう。"].freeze
+  HINTS = ["とりあえず寝る。再起動は明日の自分に任せる。", "一度閉じて、直った顔で開き直す。", "コーヒーを追加して、仕様ということにする。", "原因は昨日の自分。担当者は現在不在です。", "何もしてないけど直った、を待つ。", "検索窓にエラーを貼って、先人に祈る。"].freeze
 
   def self.daily_seed(day, category)
     Zlib.crc32("bug-generator-v1:#{day}:#{category}")
@@ -69,7 +69,7 @@ class BugRoll
       id: "#{category}-#{seed}", seed: seed, category_key: category, category: label,
       type: type, message: message, level: level, severity: severity, status: status,
       trace: trace, hint: hint, rare: rare, daily: daily,
-      text: "[#{level}] #{type}\n#{message}\n深刻度: #{severity}%\n\n#{trace.join("\n")}\n\nHint: #{hint}"
+      text: "[#{level}] #{type}\n#{message}\n深刻度: #{severity}%\n\n#{trace.join("\n")}\n\nWORKAROUND: #{hint}"
     }
   end
 end

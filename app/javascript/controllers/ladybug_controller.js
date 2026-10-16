@@ -104,15 +104,17 @@ export default class extends Controller {
             wrap.style.width = `${s.size}px`
             wrap.style.height = `${s.size}px`
 
-            const word = this.element.closest(".title-row").querySelector("h1")
+            const word = this.element.closest(".result-panel").querySelector(".panel-heading")
             const box = layer.getBoundingClientRect()
             if (!word || box.width === 0) return
             const r = word.getBoundingClientRect()
 
             // 字の右端の外側へ逃がす。重ねると可読性を削る。
-            s.ax = r.right - box.left + s.size * 0.5
-            s.ay = r.top - box.top + s.size * 0.18
-            s.L = Math.max(s.size * 0.9, r.height * HANG_RATIO) - STRETCH
+            s.ax = box.width / 2
+            s.ay = 0
+            const meter = this.element.closest(".result-panel").querySelector(".severity-track")
+            const belowMeter = meter ? meter.getBoundingClientRect().bottom - box.top + s.attachY + 18 : 120
+            s.L = Math.max(s.size * 0.9 + 24, belowMeter) - STRETCH
         }
 
         /** アンカーからの距離に上限をかける。掴んでいる間も効かせる。 */
@@ -122,9 +124,10 @@ export default class extends Controller {
             const dx = s.bx - s.ax
             const dy = s.by - s.ay
             const d = Math.hypot(dx, dy)
-            if (d > MAX_REACH) {
-                s.bx = s.ax + (dx / d) * MAX_REACH
-                s.by = s.ay + (dy / d) * MAX_REACH
+            const reach = Math.max(MAX_REACH, s.L + STRETCH + 60)
+            if (d > reach) {
+                s.bx = s.ax + (dx / d) * reach
+                s.by = s.ay + (dy / d) * reach
                 if (!s.dragging) {
                     // 上限で跳ね返す。減衰させないと壁を擦り続ける。
                     s.vx *= 0.4
@@ -340,7 +343,7 @@ export default class extends Controller {
         window.addEventListener('resize', onResize)
 
         // ワードマークは 17.4vw なので、字の大きさが変われば吊り位置も変わる。
-        const word = this.element.closest(".title-row").querySelector("h1")
+        const word = this.element.closest(".result-panel").querySelector(".panel-heading")
         const ro = new ResizeObserver(() => measure())
         if (word) ro.observe(word)
 

@@ -14,6 +14,8 @@ export default class extends Controller {
         btn.textContent = orig
         btn.classList.remove("copy-btn--done")
       }, 1500)
+    }).catch(() => {
+      this.btnTarget.textContent = "コピーできませんでした"
     })
   }
 }
