@@ -1,39 +1,44 @@
 <div class="container">
-  <h1>🐞 Bug Generator</h1>
-  <p>今日のあなたのバグ</p>
-
+  <header class="generator-header"><span class="eyebrow">A LITTLE ERROR, A LITTLE LAUGH.</span><div class="title-row"><h1>Bug Generator</h1><div class="ladybug-stage" data-controller="ladybug">
+      <svg class="ladybug-thread" aria-hidden="true"><path data-ladybug-target="thread" d="M28 0 L28 45" /></svg>
+      <button type="button" class="ladybug-handle" aria-label="MizeLyのてんとう虫を揺らす" data-ladybug-target="bug" data-action="pointerdown->ladybug#grab pointermove->ladybug#move pointerup->ladybug#release pointercancel->ladybug#release lostpointercapture->ladybug#release click->ladybug#nudge"><%= render "shared/ladybug" %></button>
+    </div></div><p>今日のあなた、どこでバグる？</p></header>
   <turbo-frame id="bug">
-    <span class="bug-category"><%= @category %></span>
-
-    <div class="error-box <%= 'rare' if @rare %>">
-      <%= @bug %>
-    </div>
-
-    <% if @bug_count > 1 %>
-      <p class="bug-counter">今日 <strong><%= @bug_count %></strong> 回バグった 🐞</p>
-    <% end %>
-
-    <div class="buttons"
-         data-controller="copy"
-         data-copy-text-value="<%= @bug %>">
-      <%= button_to "もう一回バグる", root_path, method: :get, class: "bug-btn",
-            data: { turbo_frame: "bug" } %>
-
-      <button class="copy-btn" data-copy-target="btn" data-action="copy#copy">
-        コピー
-      </button>
-
-      <a href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(@share_text) %>&url=<%= ERB::Util.url_encode(@share_url) %>"
-         target="_blank" rel="noopener" class="share-btn">
-        ✕ 投稿
-      </a>
-    </div>
+    <section data-controller="collection" data-collection-result-value="<%= @result.to_json %>" data-collection-url-value="<%= @share_url %>" data-collection-day-value="<%= @today.iso8601 %>" data-collection-track-value="<%= @track %>">
+      <nav class="category-picker" aria-label="バグのテーマ">
+        <% { "all" => "おまかせ" }.merge(BugRoll::CATEGORIES.transform_values(&:first)).each do |key, label| %>
+          <%= link_to label, root_path(category: key), class: "category-chip #{'selected' if @selected_category == key}", aria: { current: (@selected_category == key ? "true" : nil) } %>
+        <% end %>
+      </nav>
+      <div class="result-heading"><span class="bug-category"><%= @result[:category] %></span><span class="result-tag"><%= @daily ? "DAILY RARE · #{@day.iso8601}" : (@result[:rare] ? "✦ RARE BUG" : "BUG REPORT") %></span></div>
+      <article class="error-box <%= 'rare' if @result[:rare] %>" data-collection-target="card">
+        <div class="report-topline"><span><%= @result[:level] %></span><span>深刻度 <%= @result[:severity] %>%</span></div>
+        <h2><%= @result[:type] %></h2><p class="bug-message"><%= @result[:message] %></p>
+        <div class="severity-track"><span style="width:<%= @result[:severity] %>%"></span></div>
+        <p class="severity-caption"><%= @result[:status] %></p>
+        <pre class="stack-trace"><%= @result[:trace].join("\n") %></pre>
+        <p class="bug-hint"><span>HINT</span> <%= @result[:hint] %></p>
+      </article>
+      <p class="bug-counter" data-collection-target="stats" aria-live="polite"></p>
+      <div class="buttons" data-controller="copy" data-copy-text-value="<%= @result[:text] %>">
+        <%= button_to "もう一回バグる", root_path, method: :get, params: { category: @selected_category }, class: "bug-btn", data: { turbo_frame: "bug" } %>
+        <button class="copy-btn" data-copy-target="btn" data-action="copy#copy">コピー</button>
+        <button class="copy-btn" data-action="collection#favorite" data-collection-target="favorite" aria-pressed="false">☆ お気に入り</button>
+      </div>
+      <div class="share-actions">
+        <a href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(@share_text) %>&url=<%= ERB::Util.url_encode(@share_url) %>" target="_blank" rel="noopener" class="share-btn">𝕏 投稿</a>
+        <button class="copy-btn" data-action="collection#share">リンク共有</button>
+        <button class="copy-btn" data-action="collection#saveImage">画像を保存</button>
+      </div>
+      <p class="action-status" data-collection-target="status" role="status"></p>
+      <div class="collection-panel">
+        <%= link_to "✦ 今日のレアバグを引く", root_path(category: @selected_category, mode: "daily", day: @today.iso8601), class: "daily-link" %>
+        <p class="collection-note">カテゴリごとに毎日ひとつ。同じ日なら同じレアバグ。</p>
+        <details><summary>日別の履歴 <span data-collection-target="historyCount"></span></summary><div data-collection-target="history" class="saved-list"></div></details>
+        <details><summary>お気に入り <span data-collection-target="favoriteCount"></span></summary><div data-collection-target="favorites" class="saved-list"></div></details>
+        <p class="storage-note" data-collection-target="storageNote">履歴は直近30日・100件、お気に入りは50件まで、このブラウザに保存します。</p>
+      </div>
+    </section>
   </turbo-frame>
-
-  <a href="https://github.com/mize1978/bug_generator" target="_blank" rel="noopener" class="github-link">
-    <svg class="github-link-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-    </svg>
-    GitHub
-  </a>
+  <footer class="generator-footer"><p>バグを笑いに変えるミニアプリ。</p><p>架空のエラーログで遊ぶ作品です。実際の診断ではありません。</p><a href="https://github.com/mize1978/bug_generator" target="_blank" rel="noopener" class="github-link">GitHub ↗</a></footer>
 </div>

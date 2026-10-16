@@ -5,7 +5,7 @@ import "controllers"
 // ─── Keyboard shortcut: Space / Enter → もう一回バグる ────────────────────────
 document.addEventListener("keydown", (e) => {
   if (e.code !== "Space" && e.code !== "Enter") return
-  if (["BUTTON", "A", "INPUT", "TEXTAREA"].includes(e.target.tagName)) return
+  if (["BUTTON", "A", "INPUT", "TEXTAREA", "SELECT", "SUMMARY"].includes(e.target.tagName)) return
   e.preventDefault()
   document.querySelector(".bug-btn")?.click()
 })
@@ -15,6 +15,7 @@ let _ctx = null
 const sfx = {
   ctx() {
     if (!_ctx) _ctx = new (window.AudioContext || window.webkitAudioContext)()
+    if (_ctx.state === "suspended") _ctx.resume().catch(() => {})
     return _ctx
   },
 
